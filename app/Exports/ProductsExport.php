@@ -33,7 +33,7 @@ class ProductsExport implements FromCollection
                     $columnCounter = 0; # reset counter
                     $rowCollection = []; # reset Row
                 }
-                $rowCollection[$columnCounter] = "{$product->name} " . PHP_EOL . " {$product->id}";
+                $rowCollection[$columnCounter] = "Elrayan" . PHP_EOL . "{$product->name} " . PHP_EOL . " {$product->id}";
                 $columnCounter++;
             }
 

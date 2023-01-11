@@ -26,11 +26,16 @@ class ProductsImport implements ToCollection , SkipsEmptyRows, WithHeadingRow
         // dd($batch);
         foreach ($collection as $row)
         {
+            $strArray = explode(" ", $row['item_name']);
+            $productName ="";
+            foreach (array_chunk($strArray,5) as $sub) {
+                $productName .= trim(implode(" ",$sub)) . "\n";
+            }
             Product::updateOrCreate([
-                'name' => $row['item_name']
+                'name' => $productName
             ],
             [
-                'name' => $row['item_name'] ?? '',
+                'name' => $productName ?? '',
                 'price' => $row['item_stock_value'] ?? 0,
                 'quantity' => $row['item_stock_quantity'] ?? 0,
                 'batch' => $batch
